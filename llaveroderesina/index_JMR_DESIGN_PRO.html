@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#0b0f1a">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="JMR Design - Llaveros personalizados hechos a mano.">
+<title>JMR Design | Llaveros personalizados</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:Poppins,sans-serif;background:#0b0f1a;color:#fff;
+  min-height:100vh;line-height:1.5;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+
+/* NAVBAR */
+.navbar{
+  position:sticky;top:0;z-index:1500;
+  background:rgba(11,15,26,.88);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(30,144,255,.25);
+}
+.nav-inner{
+  max-width:1200px;margin:auto;padding:12px 22px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.brand{font-weight:800;font-size:1.25rem;color:#fff}
+.brand span{color:#1e90ff}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{color:#dbeafe;font-size:.9rem;transition:.25s}
+.nav-links a:hover{color:#1e90ff}
+.nav-cart{
+  border:1px solid rgba(30,144,255,.5);background:#111827;color:#fff;
+  border-radius:30px;padding:9px 14px;
+}
+.badge{background:#1e90ff;border-radius:50%;padding:2px 7px;font-size:.75rem;margin-left:4px}
+
+/* HERO */
+.hero{
+  min-height:650px;padding:80px 22px 60px;
+  display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;
+  max-width:1200px;margin:auto;
+}
+.hero-text .eyebrow{
+  display:inline-block;color:#7dd3fc;background:rgba(30,144,255,.1);
+  border:1px solid rgba(30,144,255,.35);padding:7px 14px;border-radius:30px;
+  margin-bottom:18px;font-size:.85rem;
+}
+.hero h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.02;margin-bottom:20px}
+.hero h1 span{color:#1e90ff}
+.hero p{color:#b9c4d6;max-width:600px;font-size:1.05rem}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{
+  border:0;border-radius:30px;padding:13px 21px;font-weight:700;
+  transition:.25s;display:inline-flex;align-items:center;gap:9px;
+}
+.btn-primary{background:linear-gradient(135deg,#1e90ff,#00c6ff);color:white}
+.btn-secondary{background:#111827;border:1px solid #26364e;color:#fff}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.3)}
+.hero-card{
+  background:linear-gradient(145deg,#111827,#0f2a44);
+  border:1px solid rgba(30,144,255,.3);border-radius:28px;padding:15px;
+  box-shadow:0 25px 60px rgba(0,0,0,.35);
+}
+.hero-card img{width:100%;height:480px;object-fit:cover;border-radius:20px}
+
+/* BENEFITS */
+.benefits{
+  max-width:1150px;margin:10px auto 70px;padding:0 22px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+}
+.benefit{
+  background:#111827;border:1px solid #1f3048;border-radius:18px;padding:20px;
+}
+.benefit i{font-size:1.5rem;color:#1e90ff;margin-bottom:8px}
+.benefit h3{font-size:1rem}.benefit p{color:#9ca9bd;font-size:.85rem;margin-top:4px}
+
+/* SECTION */
+.section{max-width:1200px;margin:0 auto 75px;padding:0 22px}
+.section-title{text-align:center;margin-bottom:30px}
+.section-title .mini{color:#1e90ff;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px}
+.section-title h2{font-size:2rem;margin-top:5px}
+.section-title p{color:#9ca9bd;margin-top:7px}
+
+/* CATEGORIES */
+.categories{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.cat{
+  background:#111827;color:#dbeafe;border:1px solid #25354b;
+  border-radius:px;padding:9px 16px;transition:.25s
+}
+.cat:hover,.cat.active{background:#1e90ff;border-color:#1e90ff;color:white}
+
+/* PRODUCTS */
+.shop-tools{
+  display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;
+  margin-bottom:60px;
+}
+.search{
+  flex:1;min-width:220px;background:#111827;color:white;border:1px solid #26364e;
+  border-radius:30px;padding:12px 18px;outline:none;
+}
+.search:focus{border-color:#1e90ff}
+.sort{
+  background:#111827;color:#fff;border:1px solid #26364e;border-radius:30px;padding:12px 16px;
+}
+.products{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px;
+}
+.card{
+  background:linear-gradient(160deg,#111827,#0f172a);
+  border:1px solid #20314a;border-radius:22px;padding:14px;
+  position:relative;overflow:hidden;transition:.3s;
+}
+.card:hover{transform:translateY(-6px);border-color:#1e90ff;box-shadow:0 15px 35px rgba(0,0,0,.3)}
+.card-img-wrap{position:relative}
+.card img{width:100%;height:250px;object-fit:cover;border-radius:16px;display:block}
+.favorite{
+  position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;
+  background:rgba(11,15,26,.8);border:1px solid #31445e;color:#fff;
+}
+.favorite.active{color:#ff4f81}
+.card h3{font-size:1rem;margin:13px 0 4px}
+.price{color:#38bdf8;font-size:1.15rem;font-weight:800}
+.card small{display:block;color:#8391a5;margin:3px 0 12px}
+.card .btn{width:100%;justify-content:center;padding:10px}
+
+/* HOW TO BUY */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.step{
+  text-align:center;background:#111827;border:1px solid #20314a;border-radius:20px;padding:22px 15px
+}
+.step-num{
+  width:45px;height:45px;border-radius:50%;display:grid;place-items:center;
+  background:#1e90ff;margin:0 auto 12px;font-weight:800
+}
+.step p{color:#9ca9bd;font-size:.85rem;margin-top:5px}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gallery img{width:100%;height:450px;object-fit:cover;border-radius:16px;transition:.3s}
+.gallery img:hover{transform:scale(1.03)}
+
+/* REVIEWS */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.review{
+  background:#111827;border:1px solid #20314a;border-radius:20px;padding:22px
+}
+.stars{color:#ffd166;letter-spacing:2px}.review p{color:#c5cfdd;margin:12px 0}.review strong{font-size:.9rem}
+
+/* FAQ */
+.faq{max-width:850px;margin:auto}
+.faq-item{border-bottom:1px solid #26364e}
+.faq-question{
+  width:100%;background:none;color:#fff;border:0;padding:18px 4px;
+  display:flex;justify-content:space-between;text-align:left;font-weight:600
+}
+.faq-answer{display:none;color:#9ca9bd;padding:0 4px 18px}
+.faq-item.open .faq-answer{display:block}
+.faq-item.open .faq-question i{transform:rotate(180deg)}
+
+/* VIDEO */
+.videos{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.video-box{background:#111827;padding:10px;border-radius:22px;border:1px solid #20314a}
+.video-box video{width:100%;height:800px;object-fit:cover;border-radius:16px}
+
+/* CART DRAWER */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1800;
+  opacity:0;visibility:hidden;transition:.3s
+}
+.overlay.show{opacity:1;visibility:visible}
+.cart{
+  position:fixed;top:0;right:-430px;width:min(420px,92vw);height:100vh;
+  background:#0f172a;border-left:1px solid #26364e;z-index:1900;
+  padding:22px;transition:.35s;overflow-y:auto;
+}
+.cart.open{right:0}
+.cart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.close{background:#1f2937;border:0;color:#fff;width:38px;height:38px;border-radius:50%}
+.cart-item{
+  display:grid;grid-template-columns:60px 1fr auto;gap:10px;align-items:center;
+  padding:12px 0;border-bottom:1px solid #26364e
+}
+.cart-item img{width:60px;height:60px;object-fit:cover;border-radius:10px}
+.qty{display:flex;gap:7px;align-items:center;margin-top:5px}
+.qty button{width:27px;height:27px;border:0;border-radius:50%;background:#1e90ff;color:#fff}
+.cart-total{font-size:1.25rem;font-weight:800;margin:20px 0}
+.form input,.form textarea{
+  width:100%;background:#111827;border:1px solid #26364e;color:white;
+  border-radius:12px;padding:12px;margin-bottom:10px;outline:none
+}
+.form textarea{resize:vertical;min-height:80px}
+.form input:focus,.form textarea:focus{border-color:#1e90ff}
+.cart-actions{display:grid;gap:9px}
+
+/* MODAL PERSONALIZATION */
+.modal-wrap{
+  position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:2500;
+  display:none;place-items:center;padding:20px
+}
+.modal-wrap.show{display:grid}
+.modal{
+  width:min(520px,100%);max-height:90vh;overflow:auto;
+  background:#0f172a;border:1px solid #26364e;border-radius:25px;padding:25px
+}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.modal label{display:block;color:#b9c4d6;font-size:.85rem;margin:12px 0 6px}
+.modal select,.modal input,.modal textarea{
+  width:100%;background:#111827;border:1px solid #26364e;color:white;
+  border-radius:12px;padding:11px
+}
+
+/* FLOATING */
+.float{
+  position:fixed;bottom:20px;z-index:1400;width:52px;height:52px;border-radius:50%;
+  display:grid;place-items:center;color:white;box-shadow:0 8px 25px rgba(0,0,0,.35)
+}
+.float-wa{left:20px;background:#25D366}
+.float-ig{right:20px;background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4)}
+.float:hover{transform:scale(1.08)}
+.toast{
+  position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);
+  background:#1e90ff;color:#fff;padding:13px 20px;border-radius:30px;
+  opacity:0;visibility:hidden;transition:.3s;z-index:3000;white-space:nowrap
+}
+.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+/* FOOTER */
+footer{background:#080c14;border-top:1px solid #1f3048;padding:45px 22px 25px;margin-top:30px}
+.footer-grid{max-width:1150px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer h3{margin-bottom:10px}footer p,footer a{color:#8f9caf;font-size:.88rem}
+footer a:hover{color:#1e90ff}
+.copyright{text-align:center;border-top:1px solid #1f3048;margin-top:30px;padding-top:20px;color:#64748b;font-size:.78rem}
+
+/* RESPONSIVE */
+@media(max-width:850px){
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding-top:50px}
+  .hero-card img{height:380px}
+  .benefits,.steps,.reviews{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .videos{grid-template-columns:1fr}
+  .video-box video{height:350px}
+  .footer-grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .hero{min-height:auto}
+  .hero h1{font-size:2.65rem}
+  .hero-card img{height:330px}
+  .products{grid-template-columns:repeat(2,1fr);gap:10px}
+  .card{padding:9px;border-radius:17px}
+  .card img{height:180px}
+  .card h3{font-size:.85rem}
+  .price{font-size:1rem}
+  .card .btn{font-size:.78rem;padding:9px 5px}
+  .gallery img{height:140px}
+  .shop-tools{display:grid}
+  .search,.sort{width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="brand" href="#inicio">JMR <span>DESIGN</span></a>
+    <div class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="#como-comprar">Cómo comprar</a>
+      <a href="#galeria">Galería</a>
+      <a href="#faq">Preguntas</a>
+    </div>
+    <button class="nav-cart" onclick="toggleCart()">
+      <i class="fa-solid fa-cart-shopping"></i> Carrito <span class="badge" id="cart-count">0</span>
+    </button>
+  </div>
+</nav>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-text">
+    <span class="eyebrow">✨ HECHOS A MANO • PERSONALIZADOS</span>
+    <h1>Un detalle único,<br><span>hecho para vos.</span></h1>
+    <p>Llaveros personalizados de JMR Design. Elegí tu modelo, agregalo al carrito y enviá tu pedido directamente por WhatsApp.</p>
+    <div class="hero-actions">
+      <a href="#productos" class="btn btn-primary"><i class="fa-solid fa-bag-shopping"></i> Ver productos</a>
+      <button class="btn btn-secondary" onclick="openPersonalize()"><i class="fa-solid fa-wand-magic-sparkles"></i> Personalizar</button>
+    </div>
+  </div>
+  <div class="hero-card">
+    <img src="i.jpeg" alt="Llavero personalizado JMR Design">
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="benefit"><i class="fa-solid fa-heart"></i><h3>Hechos con amor</h3><p>Cada pieza es preparada especialmente para vos.</p></div>
+  <div class="benefit"><i class="fa-solid fa-wand-magic-sparkles"></i><h3>Personalizados</h3><p>Podés elegir detalles para crear un diseño único.</p></div>
+  <div class="benefit"><i class="fa-solid fa-comments"></i><h3>Atención directa</h3><p>Confirmamos tu pedido por WhatsApp.</p></div>
+</section>
+
+<section class="section" id="productos">
+  <div class="section-title">
+    <span class="mini">JMR SHOP</span><h2>Nuestros productos</h2>
+    <p>Elegí tu favorito y agregalo al carrito 💙</p>
+  </div>
+
+  <div class="categories">
+    <button class="cat active" onclick="filterCategory('Todos',this)">Todos</button>
+    <button class="cat" onclick="filterCategory('Mujer',this)">👩 Mujer</button>
+    <button class="cat" onclick="filterCategory('Hombre',this)">👨 Hombre</button>
+    <button class="cat" onclick="filterCategory('Medallas',this)">🏅 Medallas</button>
+    <button class="cat" onclick="filterCategory('Infantil',this)">👶 Infantil</button>
+    <button class="cat" onclick="filterCategory('Futbol',this)">⚽ Fútbol</button>
+    <button class="cat" onclick="filterCategory('Señaladores',this)">📖 Señaladores</button>
+  </div>
+
+  <div class="shop-tools" style="margin-top:22px">
+    <input class="search" id="search" placeholder="🔎 Buscar producto..." oninput="renderProducts()">
+    <select class="sort" id="sort" onchange="renderProducts()">
+      <option value="default">Ordenar productos</option>
+      <option value="low">Precio: menor a mayor</option>
+      <option value="high">Precio: mayor a menor</option>
+    </select>
+  </div>
+
+  <div class="products" id="products"></div>
+</section>
+
+<section class="section" id="como-comprar">
+  <div class="section-title"><span class="mini">FÁCIL Y RÁPIDO</span><h2>¿Cómo comprar?</h2><p>Tu pedido en solo 4 pasos.</p></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Elegí</h3><p>Encontrá el llavero que más te guste.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Personalizá</h3><p>Contanos cómo querés tu diseño.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Carrito</h3><p>Agregá tus productos y revisá el total.</p></div>
+    <div class="step"><div class="step-num">4</div><h3>Confirmá</h3><p>Enviamos tu pedido por WhatsApp.</p></div>
+  </div>
+</section>
+
+<section class="section" id="galeria">
+  <div class="section-title"><span class="mini">NUESTROS TRABAJOS</span><h2>Galería JMR Design</h2><p>Algunos de nuestros diseños.</p></div>
+  <div class="gallery">
+    <img src="i.jpeg" alt="Trabajo JMR Design"><img src="im.jpeg" alt="Trabajo JMR Design">
+    <img src="img.jpeg" alt="Trabajo JMR Design"><img src="l.jpeg" alt="Trabajo JMR Design">
+    <img src="ll.jpeg" alt="Trabajo JMR Design"><img src="m.jpeg" alt="Trabajo JMR Design">
+    <img src="o.jpeg" alt="Trabajo JMR Design"><img src="7.jpeg" alt="Trabajo JMR Design">
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title"><span class="mini">JMR DESIGN</span><h2>Miralos en acción ✨</h2></div>
+  <div class="videos">
+    <div class="video-box"><video autoplay loop muted playsinline><source src="video.mp4" type="video/mp4"></video></div>
+    <div class="video-box"><video autoplay loop muted playsinline><source src="vide.mp4" type="video/mp4"></video></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title"><span class="mini">CLIENTES</span><h2>Lo que dicen de JMR</h2></div>
+  <div class="reviews">
+    <div class="review"><div class="stars">★★★★★</div><p>“Me encantó cómo quedó mi llavero. Hermoso y súper personalizado.”</p><strong>💙 Cliente JMR</strong></div>
+    <div class="review"><div class="stars">★★★★★</div><p>“Muy lindo trabajo y excelente atención. Volvería a pedir.”</p><strong>💙 Cliente JMR</strong></div>
+    <div class="review"><div class="stars">★★★★★</div><p>“El diseño quedó tal cual lo imaginaba. ¡Gracias!”</p><strong>💙 Cliente JMR</strong></div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="section-title"><span class="mini">AYUDA</span><h2>Preguntas frecuentes</h2></div>
+  <div class="faq">
+    <div class="faq-item"><button class="faq-question">¿Puedo personalizar mi llavero? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-answer">Sí. Podés indicarnos el diseño, nombre o detalles que querés y lo coordinamos por WhatsApp.</div></div>
+    <div class="faq-item"><button class="faq-question">¿Cómo realizo el pedido? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-answer">Agregá los productos al carrito, completá tus datos y presioná “Enviar pedido por WhatsApp”.</div></div>
+    <div class="faq-item"><button class="faq-question">¿Puedo pedir varios productos? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-answer">Sí. Podés modificar las cantidades desde el carrito antes de enviar el pedido.</div></div>
+    <div class="faq-item"><button class="faq-question">¿Cómo consulto por envíos? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-answer">Podés escribirnos por WhatsApp para consultar las opciones disponibles para tu zona.</div></div>
+  </div>
+</section>
+</main>
+
+<!-- CART -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="cart" id="cart">
+  <div class="cart-head">
+    <h2>🛒 Tu carrito</h2>
+    <button class="close" onclick="closeCart()">✕</button>
+  </div>
+  <div id="cart-list"></div>
+  <div class="cart-total">Total: $<span id="cart-total">0</span></div>
+  <div class="form">
+    <input id="nombre" placeholder="Tu nombre *">
+    <input id="direccion" placeholder="Dirección / localidad">
+    <textarea id="nota" placeholder="¿Querés agregar alguna indicación?"></textarea>
+  </div>
+  <div class="cart-actions">
+    <button class="btn btn-primary" onclick="buyWhatsApp()"><i class="fa-brands fa-whatsapp"></i> Enviar pedido por WhatsApp</button>
+    <button class="btn btn-secondary" onclick="clearCart()">Vaciar carrito</button>
+  </div>
+</aside>
+
+<!-- PERSONALIZATION MODAL -->
+<div class="modal-wrap" id="personalize-modal">
+  <div class="modal">
+    <div class="modal-head"><h2>✨ Personalizá tu pedido</h2><button class="close" onclick="closePersonalize()">✕</button></div>
+    <label>Producto</label>
+    <select id="custom-product">
+      <option>Llavero de Mujer</option><option>Llavero de Hombre</option><option>Medallas Grandes</option>
+      <option>Llavero Infantil</option><option>Llavero de Futbol</option><option>Señaladores</option>
+    </select>
+    <label>Nombre / texto</label><input id="custom-name" placeholder="Ej.: Débora">
+    <label>Color preferido</label><input id="custom-color" placeholder="Ej.: azul, rosa, negro...">
+    <label>Detalle del diseño</label><textarea id="custom-detail" placeholder="Contanos cómo te gustaría..."></textarea>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:15px" onclick="sendCustom()">
+      <i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp
+    </button>
+  </div>
+</div>
+
+<a class="float float-wa" href="https://wa.me/5493572541499" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<a class="float float-ig" href="https://www.instagram.com/jmr.desing" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+
+<div class="toast" id="toast">Agregado al carrito 🛒</div>
+
+<footer>
+  <div class="footer-grid">
+    <div><h3>JMR <span style="color:#1e90ff">DESIGN</span> 💙</h3><p>Llaveros personalizados hechos a mano con amor.</p></div>
+    <div><h3>Enlaces</h3><p><a href="#productos">Productos</a></p><p><a href="#galeria">Galería</a></p><p><a href="#faq">Preguntas frecuentes</a></p></div>
+    <div><h3>Contacto</h3><p><a href="https://wa.me/5493572541499" target="_blank">WhatsApp</a></p><p><a href="https://www.instagram.com/jmr.desing" target="_blank">@jmr.desing</a></p></div>
+  </div>
+  <div class="copyright">© 2026 JMR Design — Todos los derechos reservados.</div>
+</footer>
+
+<script>
+const products = [
+  {id:1,name:"Llavero de Mujer",price:6000,img:"i.jpeg",cat:"Mujer"},
+  {id:2,name:"Llavero de Hombre",price:6000,img:"e.jpeg",cat:"Hombre"},
+  {id:3,name:"Medallas Grandes",price:4000,img:"m.jpeg",cat:"Medallas"},
+  {id:4,name:"Llavero Infantil",price:4000,img:"y.jpeg",cat:"Infantil"},
+  {id:5,name:"Llavero de Futbol",price:6000,img:"t.jpeg",cat:"Futbol"},
+  {id:6,name:"Señaladores",price:3000,img:"ss.jpeg",cat:"Señaladores"}
+];
+
+let cart = JSON.parse(localStorage.getItem("jmr_cart")) || [];
+let currentCategory = "Todos";
+
+const money = n => new Intl.NumberFormat("es-AR").format(n);
+
+function saveCart(){ localStorage.setItem("jmr_cart",JSON.stringify(cart)); }
+
+function showToast(text){
+  const t=document.getElementById("toast");
+  t.textContent=text;t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),1800);
+}
+
+function renderProducts(){
+  const q=document.getElementById("search").value.toLowerCase().trim();
+  const sort=document.getElementById("sort").value;
+  let list=products.filter(p=>
+    (currentCategory==="Todos" || p.cat===currentCategory) &&
+    p.name.toLowerCase().includes(q)
+  );
+  if(sort==="low") list.sort((a,b)=>a.price-b.price);
+  if(sort==="high") list.sort((a,b)=>b.price-a.price);
+
+  document.getElementById("products").innerHTML=list.length ? list.map(p=>{
+    const fav=JSON.parse(localStorage.getItem("jmr_favs")||"[]").includes(p.id);
+    return `
+      <article class="card">
+        <div class="card-img-wrap">
+          <img src="${p.img}" alt="${p.name}">
+          <button class="favorite ${fav?"active":""}" onclick="toggleFavorite(${p.id},this)" aria-label="Favorito">♥</button>
+        </div>
+        <h3>${p.name}</h3>
+        <div class="price">$${money(p.price)}</div>
+        <small>✨ Personalizable</small>
+        <button class="btn btn-primary" onclick="addToCart(${p.id})"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
+      </article>`;
+  }).join("") : `<p style="grid-column:1/-1;text-align:center;color:#8f9caf;padding:30px">No encontramos productos con esa búsqueda 💙</p>`;
+}
+
+function filterCategory(cat,btn){
+  currentCategory=cat;
+  document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));
+  btn.classList.add("active");
+  renderProducts();
+}
+
+function addToCart(id){
+  const p=products.find(x=>x.id===id);
+  const item=cart.find(x=>x.id===id);
+  if(item)item.qty++;
+  else cart.push({id:p.id,qty:1});
+  saveCart();renderCart();openCart();showToast("Agregado al carrito 🛒");
+}
+
+function changeQty(id,delta){
+  const item=cart.find(x=>x.id===id);
+  if(!item)return;
+  item.qty+=delta;
+  if(item.qty<=0)cart=cart.filter(x=>x.id!==id);
+  saveCart();renderCart();
+}
+
+function removeItem(id){
+  cart=cart.filter(x=>x.id!==id);saveCart();renderCart();
+}
+
+function clearCart(){
+  if(!cart.length)return;
+  if(confirm("¿Querés vaciar el carrito?")){
+    cart=[];saveCart();renderCart();showToast("Carrito vacío");
+  }
+}
+
+function renderCart(){
+  const list=document.getElementById("cart-list");
+  let total=0,count=0;
+  if(!cart.length){
+    list.innerHTML=`<div style="text-align:center;padding:45px 10px;color:#8f9caf"><i class="fa-solid fa-cart-shopping" style="font-size:2.5rem;color:#1e90ff"></i><p style="margin-top:12px">Tu carrito está vacío.</p></div>`;
+  }else{
+    list.innerHTML=cart.map(item=>{
+      const p=products.find(x=>x.id===item.id);
+      const subtotal=p.price*item.qty;total+=subtotal;count+=item.qty;
+      return `<div class="cart-item">
+        <img src="${p.img}" alt="${p.name}">
+        <div><strong>${p.name}</strong><div style="color:#38bdf8">$${money(subtotal)}</div>
+          <div class="qty"><button onclick="changeQty(${p.id},-1)">−</button><span>${item.qty}</span><button onclick="changeQty(${p.id},1)">+</button></div>
+        </div>
+        <button class="close" onclick="removeItem(${p.id})">🗑</button>
+      </div>`;
+    }).join("");
+  }
+  document.getElementById("cart-total").textContent=money(total);
+  document.getElementById("cart-count").textContent=count;
+}
+
+function openCart(){document.getElementById("cart").classList.add("open");document.getElementById("overlay").classList.add("show")}
+function closeCart(){document.getElementById("cart").classList.remove("open");document.getElementById("overlay").classList.remove("show")}
+function toggleCart(){document.getElementById("cart").classList.contains("open")?closeCart():openCart()}
+
+function buyWhatsApp(){
+  if(!cart.length){showToast("Agregá productos primero 💙");return}
+  const nombre=document.getElementById("nombre").value.trim();
+  const direccion=document.getElementById("direccion").value.trim();
+  const nota=document.getElementById("nota").value.trim();
+  if(!nombre){alert("Por favor ingresá tu nombre.");document.getElementById("nombre").focus();return}
+
+  let total=0,msg="🛍️ *PEDIDO JMR DESIGN*%0A━━━━━━━━━━━━━━━%0A";
+  cart.forEach(item=>{
+    const p=products.find(x=>x.id===item.id),sub=p.price*item.qty;total+=sub;
+    msg+=`🔹 ${encodeURIComponent(p.name)}%0A`;
+    msg+=`   Cantidad: ${item.qty}%0A`;
+    msg+=`   Subtotal: $${sub}%0A%0A`;
+  });
+  msg+=`━━━━━━━━━━━━━━━%0A💰 *TOTAL: $${total}*%0A`;
+  msg+=`👤 Cliente: ${encodeURIComponent(nombre)}%0A`;
+  if(direccion)msg+=`📍 Dirección: ${encodeURIComponent(direccion)}%0A`;
+  if(nota)msg+=`📝 Nota: ${encodeURIComponent(nota)}%0A`;
+  msg+=`%0A💙 Gracias por elegir JMR Design`;
+
+  window.open(`https://wa.me/5493572541499?text=${msg}`,"_blank");
+  cart=[];saveCart();renderCart();
+  document.getElementById("nombre").value="";
+  document.getElementById("direccion").value="";
+  document.getElementById("nota").value="";
+  closeCart();showToast("Pedido preparado para WhatsApp 💙");
+}
+
+function toggleFavorite(id,btn){
+  let favs=JSON.parse(localStorage.getItem("jmr_favs")||"[]");
+  if(favs.includes(id))favs=favs.filter(x=>x!==id);
+  else favs.push(id);
+  localStorage.setItem("jmr_favs",JSON.stringify(favs));
+  btn.classList.toggle("active",favs.includes(id));
+}
+
+function openPersonalize(){document.getElementById("personalize-modal").classList.add("show")}
+function closePersonalize(){document.getElementById("personalize-modal").classList.remove("show")}
+
+function sendCustom(){
+  const product=document.getElementById("custom-product").value;
+  const name=document.getElementById("custom-name").value.trim();
+  const color=document.getElementById("custom-color").value.trim();
+  const detail=document.getElementById("custom-detail").value.trim();
+  let msg=`✨ *CONSULTA DE PERSONALIZACIÓN JMR DESIGN*%0A%0A`;
+  msg+=`🛍️ Producto: ${encodeURIComponent(product)}%0A`;
+  if(name)msg+=`✏️ Nombre/texto: ${encodeURIComponent(name)}%0A`;
+  if(color)msg+=`🎨 Color: ${encodeURIComponent(color)}%0A`;
+  if(detail)msg+=`💬 Detalles: ${encodeURIComponent(detail)}%0A`;
+  window.open(`https://wa.me/5493572541499?text=${msg}`,"_blank");
+  closePersonalize();
+}
+
+document.querySelectorAll(".faq-question").forEach(btn=>{
+  btn.addEventListener("click",()=>btn.parentElement.classList.toggle("open"));
+});
+
+renderProducts();
+renderCart();
+</script>
+</body>
+</html>
